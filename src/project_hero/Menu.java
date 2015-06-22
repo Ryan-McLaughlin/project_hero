@@ -63,6 +63,18 @@ public class Menu {
 		}
 		return menu;
 		
+		// public void map(){
+			// home town ---	wt01	----	forest shrine
+			//    |									|
+			// wp01								at01
+			//    |									|
+			// bridge							cave
+			//    |									|
+			// wp02								at02
+			//    |									|
+			// waytown	----	wt02	-----	waterfall
+		// }
+		
 	}
 
 }
