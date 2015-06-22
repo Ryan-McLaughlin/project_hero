@@ -15,10 +15,10 @@ public class GameWindow extends JPanel {
 	protected static GameInputArea gameIn;
 
 	public static void initializeComponents() {
-		gameImage = new GameImageArea(200, 100);
-		gameText = new GameTextArea(100, 50);
-		hero = new Hero(100, 100);
-		gameIn = new GameInputArea(200, 75);
+		gameImage = new GameImageArea(300, 100);
+		gameText = new GameTextArea(300, 100);
+		hero = new Hero(300, 100);
+		gameIn = new GameInputArea(300, 75);
 	}
 
 	public static void addComponentsToPane(Container pane) {

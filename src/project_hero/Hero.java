@@ -12,17 +12,21 @@ public class Hero extends JPanel {
 	static JTextArea textArea;
 	final static String newline = "\n";
 
+	static Location loc;
+
 	static int health;
 	static int maxHealth;
 	static int physical;
 	static int magic;
-	static int xp;
 
-	private static void updateHero() {
-		textArea.setText("health: " + health + " / " + maxHealth + "\n");
+	public static void updateHero() {
+		textArea.setText(loc.toString() + "\n");
+		textArea.append("===============" + "\n");
+
+		textArea.append("health: " + health + " / " + maxHealth + "\n");
 		textArea.append("physical: " + physical + "\n");
 		textArea.append("magic: " + magic);
-		
+
 		if (health == 0)
 			textArea.append("\nHero is dead");
 	}
@@ -33,8 +37,6 @@ public class Hero extends JPanel {
 			health = 0;
 		if (health > maxHealth)
 			health = maxHealth;
-		
-		updateHero();
 	}
 
 	public Hero(int x, int y) {
@@ -42,6 +44,8 @@ public class Hero extends JPanel {
 
 		textArea = new JTextArea(3, 2);
 		textArea.setEditable(false);
+
+		loc = Location.HOME_TOWN;
 
 		maxHealth = 10;
 		health = 10;
