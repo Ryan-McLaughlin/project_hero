@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -14,12 +15,12 @@ public class GameInputArea extends JPanel implements ActionListener {
 	protected JButton b_01;
 	protected JButton b_02;
 	protected JButton b_03;
-	protected JButton b_04;
-	protected JButton b_05;
-	protected JButton b_06;
 
 	public GameInputArea(int x, int y) {
 		setPreferredSize(new Dimension(x, y));
+
+		JPanel bPanel = new JPanel();
+		bPanel.setLayout(new BoxLayout(bPanel, BoxLayout.Y_AXIS));
 
 		b_01 = new JButton("");
 		b_01.addActionListener(this);
@@ -32,9 +33,14 @@ public class GameInputArea extends JPanel implements ActionListener {
 
 		updateButtons();
 
-		add(b_01, BorderLayout.CENTER);
-		add(b_02, BorderLayout.CENTER);
-		add(b_03, BorderLayout.CENTER);
+		bPanel.add(b_01);
+		bPanel.add(b_02);
+		bPanel.add(b_03);
+
+		// add(b_01, BorderLayout.CENTER);
+		// add(b_02, BorderLayout.CENTER);
+		// add(b_03, BorderLayout.CENTER);
+		add(bPanel, BorderLayout.WEST);
 	}
 
 	private void updateButtons() {
@@ -188,7 +194,7 @@ public class GameInputArea extends JPanel implements ActionListener {
 		if ("home_town".equals(e.getActionCommand())) {
 			GameTextArea.addText("moving to home town");
 			Hero.loc = Location.HOME_TOWN;
-		}		
+		}
 
 		if ("wooded_trail_01".equals(e.getActionCommand())) {
 			GameTextArea.addText("moving to wooded trail 01");
@@ -249,14 +255,18 @@ public class GameInputArea extends JPanel implements ActionListener {
 			GameTextArea.addText("moving to waterfall");
 			Hero.loc = Location.WATERFALL;
 		}
-		
-		// non travel
+
+		// non travel ***************************************
 		if ("pray".equals(e.getActionCommand())) {
 			GameTextArea.addText("you feel the gods bless you");
 		}
-		
+
 		if ("shop".equals(e.getActionCommand())) {
 			GameTextArea.addText("shopping");
+		}
+		
+		if ("fight".equals(e.getActionCommand())){
+			
 		}
 
 		Hero.updateHero();

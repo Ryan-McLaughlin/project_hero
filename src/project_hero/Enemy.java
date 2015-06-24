@@ -1,0 +1,61 @@
+package project_hero;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
+public class Enemy extends JPanel {
+
+	static JTextArea textArea;
+	final static String newline = "\n";
+
+	static Location loc;
+
+	static int health;
+	static int maxHealth;
+	static int physical;
+	static int magic;
+
+	public static void updateEnemy() {
+		if (GameWindow.fight == false) {
+			textArea.setText("enemy" + "\n");
+
+			textArea.append("===============" + "\n");
+
+			textArea.append("health: " + health + " / " + maxHealth + "\n");
+			textArea.append("physical: " + physical + "\n");
+			textArea.append("magic: " + magic);
+
+			if (health == 0)
+				textArea.append("\nHero is dead");
+		}
+	}
+
+	public static void addHealth(int hpMod) {
+		health += hpMod;
+		if (health < 1)
+			health = 0;
+		if (health > maxHealth)
+			health = maxHealth;
+	}
+
+	public Enemy(int x, int y) {
+		setPreferredSize(new Dimension(x, y));
+
+		textArea = new JTextArea(3, 2);
+		textArea.setEditable(false);
+
+		loc = Location.HOME_TOWN;
+
+		maxHealth = 10;
+		health = 10;
+		physical = 5;
+		magic = 5;
+
+		updateEnemy();
+		add(textArea, BorderLayout.WEST);
+	}
+
+}
